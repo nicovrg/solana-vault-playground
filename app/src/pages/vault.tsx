@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { BasicsView } from "../views";
+import { VaultView } from "../views";
 
-const Basics: NextPage = (props) => {
+const Vault: NextPage = (props) => {
   return (
     <div>
       <Head>
@@ -12,9 +12,9 @@ const Basics: NextPage = (props) => {
           content="Basic Functionality"
         />
       </Head>
-      <BasicsView />
+      <VaultView />
     </div>
   );
 };
 
-export default Basics;
+export default Vault;

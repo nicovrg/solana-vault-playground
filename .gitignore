@@ -1,3 +1,7 @@
+.anchor/
 node_modules/
 test-ledger/
 target/
+app/.next
+.rustc_info.json
+CACHEDIR.TAG

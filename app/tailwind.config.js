@@ -3,7 +3,11 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   darkMode: "media",
   theme: {
-    extend: {},
+    extend: {
+      minHeight: {
+        '80vh': '80vh', // Custom value for 80% of viewport height
+      },
+    },
   },
   plugins: [
     require('daisyui'),
