@@ -80,6 +80,23 @@ export const Vault: FC = () => {
     }
   }
   
+  const withdrawFromVault = async (publicKey) => {
+    const provider = getProvider();
+    const program = new Program(idl_object, program_id, provider);
+    
+    try {
+      await program.rpc.withdraw(new BN(0.1 * web3.LAMPORTS_PER_SOL), {
+        accounts: {
+          vault: publicKey,
+          user: provider.wallet.publicKey
+        }
+      });
+      console.log("withdraw:", vaults);
+    } catch (error) {
+      console.log("error while withdrawing from vault:", error);
+    }
+  }
+
   return (
     <>
       {
@@ -89,7 +106,7 @@ export const Vault: FC = () => {
               <h1>{vault.name.toString()}</h1>
               <span>{vault.balance.toString()}</span>
               <button className="group w-60 m-2 btn animate-pulse bg-gradient-to-br from-indigo-500 to-fuchsia-500 hover:from-white" onClick={() => depositToVault(vault.pubkey)}>
-                <span>deposit 0.1 sol</span>
+                <span>Deposit To Vault</span>
               </button>
             </div>
             )
@@ -107,7 +124,11 @@ export const Vault: FC = () => {
               <span className="block group-disabled:hidden">Fetch Vaults</span>
             </button>
 
-          </div>
+            <button className="group w-60 m-2 btn animate-pulse bg-gradient-to-br from-indigo-500 to-fuchsia-500" onClick={withdrawFromVault}>
+              <span className="block group-disabled:hidden">Withdraw From Vault</span>
+            </button>
+
+            </div>
         </div>
       </div>
     </>
