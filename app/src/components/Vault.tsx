@@ -105,10 +105,15 @@ export const Vault: FC = () => {
             <div className="md:hero-content flex flex-col" key={id} >
               <h1>{vault.name.toString()}</h1>
               <span>{vault.balance.toString()}</span>
-              <button className="group w-60 m-2 btn animate-pulse bg-gradient-to-br from-indigo-500 to-fuchsia-500 hover:from-white" onClick={() => depositToVault(vault.pubkey)}>
-                <span>Deposit To Vault</span>
-              </button>
-            </div>
+              <div className="flex flex-row" >
+                <button className="group w-60 m-2 btn animate-pulse bg-gradient-to-br from-indigo-500 to-fuchsia-500 hover:from-white" onClick={() => depositToVault(vault.pubkey)}>
+                  <span>Deposit To Vault</span>
+                </button>
+                <button className="group w-60 m-2 btn animate-pulse bg-gradient-to-br from-indigo-500 to-fuchsia-500 hover:from-white" onClick={() => withdrawFromVault(vault.pubkey)}>
+                  <span>Withdraw From Vault</span>
+                </button>
+              </div>
+          </div>
             )
         })
       }
@@ -124,11 +129,7 @@ export const Vault: FC = () => {
               <span className="block group-disabled:hidden">Fetch Vaults</span>
             </button>
 
-            <button className="group w-60 m-2 btn animate-pulse bg-gradient-to-br from-indigo-500 to-fuchsia-500" onClick={withdrawFromVault}>
-              <span className="block group-disabled:hidden">Withdraw From Vault</span>
-            </button>
-
-            </div>
+          </div>
         </div>
       </div>
     </>
